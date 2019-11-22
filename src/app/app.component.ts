@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,27 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'labAssignment3';
-  firstName: string;
-  lastName: string;
-  constructor() {
-    this.firstName = 'Jimmy';
-    this.lastName = 'Clack';
+
+  constructor(
+    private router: Router
+
+  ) { }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnInit() {
   }
-  showGreeting() {
-    console.log('From showGreeting funtion this.firstName:', this.firstName, 'this.lastName: ', this.lastName);
-    const row2 = document.getElementById('r1c2');
-    //           console.log('row2', row2, 'document', document);
-    row2.innerHTML = 'Hello ' + this.firstName + ' ' + this.lastName;
-  }
-  resetGreeting() {
-    const row2 = document.getElementById('r1c2');
-    //    console.log('row2', row2, 'document', document);
-    row2.innerHTML = 'R1C2';
+
+  navigateTo(path: string) {
+    this.router.navigate([path]);
   }
 }
-// window.onload = () => {
-   // const greeter = new Greeter('James', 'Clark');
-// }
-
 
