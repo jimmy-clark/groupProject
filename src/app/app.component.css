@@ -1,9 +1,9 @@
 
-    .row-two
+    .main
      {
         background-color: rgb(154, 179, 146);
     }
-    .row-three
+    .footer
     {
        background-color: #aaaaaa;
        ;
@@ -15,7 +15,7 @@
     .main-container {
         display: grid;
         height: 100%;
-        grid-template-rows: 0fr 12fr 2fr;
+        grid-template-rows: 1fr 12fr 2fr;
     
     }
     .pull-right {
@@ -24,5 +24,4 @@
 .main-outlet{
     display: none;
 }
-
 

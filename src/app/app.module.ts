@@ -6,18 +6,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { AppRoutes } from './app.routes';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from "@angular/common/http";
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     MaterialDesignModule,
-    AppRoutes
+    AppRoutes,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,23 @@
+[
+    {
+        "sku": 100001,
+        "name": "Coke",
+        "price": 9.99,
+        "description": "12 count",
+        "editing": false
+    },
+    {
+        "sku": 100002,
+        "name": "Toothbrush",
+        "price": 1.99,
+        "description": "3 pack",
+        "editing": false
+    },
+    {
+        "sku": 100003,
+        "name": "Flashlight",
+        "price": 4.99,
+        "description": "Batteries included",
+        "editing": false
+    }
+]
