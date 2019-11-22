@@ -23,8 +23,7 @@ use an array to list out a cart that can be edited and will give a total with sa
     Usage of Arrays of items -------> DONE (items)
     Usage of objects
 
-
-    next steps:
+**next steps:**
 
     - make array to act as the shopping cart
 
