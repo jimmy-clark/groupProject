@@ -7,14 +7,18 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'Checkout',
+        path: 'checkout',
         component: CheckoutComponent
     },
     {
         // takes user to home when specified route is undefined
         path: '**',
         component: HomeComponent
-    }
+    },
+    {
+    path: 'items',
+    component: HomeComponent
+}
 
 ];
 

@@ -4,32 +4,26 @@
 <body>
 
   <div class="main-container">
-    
     <div class="header">
       <div class="container-padding">
-        R1C1
-      </div>
-      <div class="container-padding">
-          R1C2
+        <button (click)="navigateTo('items')" class="nav-button container-padding" type="button" mat-raised-button color="danger">
+          Item Editor
+      </button>
+      <button (click)="navigateTo('checkout')" class="nav-button container-padding" type="button" mat-raised-button color="alert">
+        Point of Sale
+    </button>
       </div>
     </div>
 
     <div class="main">
       <div class="container-padding">
-        <app-home></app-home>      
+        <router-outlet class= "main-outlet"></router-outlet>    
       </div>
       <div class="container-padding">
-          
+        
       </div>
     </div>
-    <div class="footer">
-        <div class="container-padding ">
-          R1C1
-        </div>
-        <div class="container-padding">
-            R1C2
-        </div>
-      </div>
+    
   </div>
   
 </body>
