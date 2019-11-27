@@ -1,3 +1,4 @@
-.main-container {
-    grid-template-columns: 1fr 5fr;
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
