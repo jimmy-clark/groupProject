@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
     this.loadItems();
   }
   async loadItems() {
-    const savedCart = this.getItemsFromLocalStorage('items');
-    if (savedCart && savedCart.length > 0) {
-      this.items = savedCart;
+    const savedItem = this.getItemsFromLocalStorage('items');
+    if (savedItem && savedItem.length > 0) {
+      this.items = savedItem;
     } else {
       // not sure why this error is happening
       this.items = await this.loadItemsFromFile();
@@ -33,10 +33,10 @@ export class HomeComponent implements OnInit {
     return data;
   }
   getItemsFromLocalStorage(key: string) {
-    const savedCart = JSON.parse(localStorage.getItem(key));
-    return savedCart;
+    const savedItem = JSON.parse(localStorage.getItem(key));
+    return savedItem;
   }
-  saveItems(item: Item) {
+  saveItem(item: Item) {
    item.editing = false;
    this.saveItemsToLocalStorage(this.items);
   }
@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
   }
   saveItemsToLocalStorage(items: Array<Item>) {
     items = this.sortBySKU(items);
-    const savedCart = localStorage.setItem('items', JSON.stringify(items));
-    return savedCart;
+    const savedItem = localStorage.setItem('items', JSON.stringify(items));
+    return savedItem;
 }
 addItem() {
   this.items.unshift(new Item({}));
