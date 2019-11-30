@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
     return savedCart;
   }
   saveItems(item: Item) {
-   item.editing = false;
-   this.saveItemsToLocalStorage(this.items);
+    item.editing = false;
+    this.saveItemsToLocalStorage(this.items);
   }
   sortBySKU(items: Array<Item>) {
     items.sort((prevItem: Item, presItem: Item) => {
@@ -50,12 +50,12 @@ export class HomeComponent implements OnInit {
     items = this.sortBySKU(items);
     const savedCart = localStorage.setItem('items', JSON.stringify(items));
     return savedCart;
-}
-addItem() {
-  this.items.unshift(new Item({}));
-}
-deleteItem(index: number) {
-  this.items.splice(index, 1);
-  this.saveItemsToLocalStorage(this.items);
-}
+  }
+  addItem() {
+    this.items.unshift(new Item({}));
+  }
+  deleteItem(index: number) {
+    this.items.splice(index, 1);
+    this.saveItemsToLocalStorage(this.items);
+  }
 }
