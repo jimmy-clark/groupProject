@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../home/home.modal';
 
 @Component({
   selector: 'app-checkout',
@@ -9,7 +10,16 @@ export class CheckoutComponent implements OnInit {
 
   constructor() { }
 
+  cart: Array<Item> = [];
+
   ngOnInit() {
   }
-
+  deleteItem(index: number) {
+    this.cart.splice(index, 1);
+    this.saveCartToLocalStorage(this.cart);
+  }
+  saveCartToLocalStorage(cart: Array<Item>) {
+    const savedCart = localStorage.setItem('cart', JSON.stringify(cart));
+    return savedCart;
+  }
 }

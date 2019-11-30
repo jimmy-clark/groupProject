@@ -6,9 +6,9 @@ export interface IItem {
     editing?: boolean;
 }
 export class Item {
-    sku?: number;
+    sku = Math.floor(Math.random() * Math.floor(99999));
     name?: string;
-    price?: string;
+    price?: number;
     editing?: boolean;
 
     constructor(item: IItem) {
@@ -18,10 +18,12 @@ export class Item {
 
     setState(item: IItem) {
 
-        if (item == null || Object.keys(item).length === 0) {
+        if (item.name == null) {
+
             return true;
         }
         let editing = false;
+
         Object.keys(item).forEach((key) => {
             console.log('from setState...', item[key]);
             if (item[key] == null) {

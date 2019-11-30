@@ -1,47 +1,69 @@
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th scope="col">SKU</th>
-            <th scope="col">Item</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
-            <th scope="col">        
-                <button type="button" class="btn btn-primary btn-sm" (click)="addItem()">Create Item</button>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of items; let i = index">
-            <th *ngIf="!item.editing" scope="row">{{item.sku}}</th>
-            <td *ngIf="!item.editing">{{item.name}}</td>
-            <td *ngIf="!item.editing">{{item.price}}</td>
-            <td *ngIf="!item.editing">{{item.description}}</td>
-            <td *ngIf="!item.editing">
-                <button type="button" class="btn btn-danger" (click)="deleteItem(i)">X</button>
-            </td>
+<app-toast></app-toast>
+<div>
+    <div>
+        <table class="table ">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">
+                        <button type="button" class="btn btn-secondary btn-sm" (click)="addItem()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                <!-- normal -->
+                <tr *ngFor="let item of items; let i = index">
+                    <th *ngIf="!item.editing" scope="row">{{item.sku}}</th>
+                    <td *ngIf="!item.editing">{{item.name}}</td>
+                    <td *ngIf="!item.editing">{{item.price}}</td>
+                    <td *ngIf="!item.editing">{{item.description}}</td>
+                    <td *ngIf="!item.editing">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-danger" (click)="deleteItem(i)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <button type="button" class="btn btn-primary" (click)="editItem(item)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
 
-            <th *ngIf="item.editing" scope="row">
-                <input [(ngModel)]="item.sku" type="text" class="form-control" placeholder="SKu" aria-label="SKU"
-                    aria-describedby="basic-addon1">
-            </th>
-            <td *ngIf="item.editing">
-                <input [(ngModel)]="item.name" type="text" class="form-control" placeholder="Name"
-                    aria-label="Name" aria-describedby="basic-addon1">
-            </td>
-            <td *ngIf="item.editing">
-                <input [(ngModel)]="item.price" type="text" class="form-control" placeholder="Price"
-                    aria-label="Price" aria-describedby="basic-addon1">
-            </td>
-            <td *ngIf="item.editing">
-                <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Description"
-                    aria-label="Description" aria-describedby="basic-addon1">
-            </td>
-            <td *ngIf="item.editing">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success contact-button"
-                        (click)="saveCart(item)">Save</button>
-                    <button type="button" class="btn btn-danger n" (click)="deleteItem(i)">X</button>
-                </div>
-            </td>
-    </tbody>
-</table>
+                    </td>
+                    <!-- editing -->
+                    <th *ngIf="item.editing" scope="row">
+                        {{item.sku}}
+                    </th>
+                    <td *ngIf="item.editing">
+                        <input [(ngModel)]="item.name" type="text" class="form-control" placeholder="Name"
+                            aria-label="Name" aria-describedby="basic-addon1">
+                    </td>
+                    <td *ngIf="item.editing">
+                        <input [(ngModel)]="item.price" type="text" class="form-control" placeholder="Price"
+                            aria-label="Price" aria-describedby="basic-addon1">
+                    </td>
+                    <td *ngIf="item.editing">
+                        <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Description"
+                            aria-label="Description" aria-describedby="basic-addon1">
+                    </td>
+                    <td *ngIf="item.editing">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success contact-button" (click)="saveItem(item)">
+                                <mat-icon>save</mat-icon>
+                            </button>
+                            <button type="button" class="btn btn-danger n" (click)="deleteItem(i)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+
+                    </td>
+            </tbody>
+        </table>
+    </div>
+    <div>
+
+    </div>
+</div>
