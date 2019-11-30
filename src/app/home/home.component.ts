@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     const savedItem = JSON.parse(localStorage.getItem(key));
     return savedItem;
   }
+
   saveItem(item: Item) {
     if (item.name === null || item.name === '') {
       this.toastService.showToast('alert', 'Name must not be blank!', 3000);
@@ -49,6 +50,7 @@ export class HomeComponent implements OnInit {
       this.saveItemsToLocalStorage(this.items);
       }
     }
+
   }
   sortBySKU(items: Array<Item>) {
     items.sort((prevItem: Item, presItem: Item) => {
@@ -58,6 +60,7 @@ export class HomeComponent implements OnInit {
   }
   saveItemsToLocalStorage(items: Array<Item>) {
     items = this.sortBySKU(items);
+
     const savedItem = localStorage.setItem('items', JSON.stringify(items));
     return savedItem;
   }
@@ -66,10 +69,12 @@ export class HomeComponent implements OnInit {
     sku: Math.floor(Math.random() * 999999 + 100000)
     }));
 }
+
   deleteItem(index: number) {
     this.items.splice(index, 1);
     this.saveItemsToLocalStorage(this.items);
   }
+
   randomSKU() {
     let randomSKU = 0;
     randomSKU = (Math.random() * 100000) + 10000000;
@@ -79,5 +84,6 @@ export class HomeComponent implements OnInit {
 editItem(item: Item) {
   item.editing = true;
 }
+
 }
 

@@ -1,4 +1,84 @@
-<div class="columns"> 
-<div>Items to choose from to add to cart</div>
-<div> Cart where items are listed out and totaled up at the bottom of the table</div>
+
+<div class="column">
+         <div>
+                <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">SKU</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cart of cartArray; let i = index">
+                                <!--th *ngIf="!item.editing" scope="row">{{item.sku}}</th>
+                                <td *ngIf="!item.editing">{{item.name}}</td>
+                                <td *ngIf="!item.editing">{{item.price}}</td>
+                                <td *ngIf="!item.editing">{{item.description}}</td-->
+
+                                <th scope="row">{{cart.SKU}}</th>
+                                <td>{{cart.Item}}</td>
+                                <td >{{cart.Price}}</td>
+                                <td >{{cart.Description}}</td>
+                                <input class="input" placeholder="1">
+                                <!--There's a gap because i decrease the size of the input box-->
+                                
+                                
+                                <!--td>
+                                    <button type="button" class="btn btn-danger" (click)="deleteItem(i)">X</button>
+                                </td>
+                    
+                                <th>
+                                    <input [(ngModel)]="item.sku" type="text" class="form-control" placeholder="SKu" aria-label="SKU"
+                                        aria-describedby="basic-addon1">
+                                </th>
+                                <td>
+                                    <input [(ngModel)]="item.name" type="text" class="form-control" placeholder="Name"
+                                        aria-label="Name" aria-describedby="basic-addon1">
+                                </td>
+                                <td>
+                                    <input [(ngModel)]="item.price" type="text" class="form-control" placeholder="Price"
+                                        aria-label="Price" aria-describedby="basic-addon1">
+                                </td>
+                                <td>
+                                    <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Description"
+                                        aria-label="Description" aria-describedby="basic-addon1">
+                                </td>
+                                <td>
+                                        <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Quantity"
+                                            aria-label="Quantity" aria-describedby="basic-addon1">
+                                </td-->
+                                 <td>
+                                        <button type="button" class="btn btn-primary" (click)="deleteItem(i)">+</button>
+                                        <button type="button" class="btn btn-danger" (click)="deleteItem(i)">-</button>
+                                        <button type="button" class="btn btn-success contact-button"(click)="saveItems(item)">Save</button>
+                                </td>
+                        </tbody>
+                    </table>
+         </div>
+         <!-- Seceond table -->
+         <div class="cart">
+                <table class="table">
+                        <thead class="thead-dark center">
+                          <tr>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let cart of cartArray; let i = index">
+                            <th scope="row">{{cart.SKU}}</th>
+                            <td>{{cart.Item}}</td>
+                            <td >{{cart.Price}}</td>
+                            <td >{{cart.Quantity}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+        </div>
 </div>
