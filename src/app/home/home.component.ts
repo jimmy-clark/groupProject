@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
   }
   addItem() {
     this.items.unshift(new Item({
-    sku: Math.floor(Math.random() * 999999 + 100000)
+    // sku: Math.floor(Math.random() * 999999 + 100000)
     }));
 }
 

@@ -4,12 +4,16 @@ export interface IItem {
     name?: string;
     price?: number;
     editing?: boolean;
+    description?: string;
+    quantity?: number;
 }
 export class Item {
     sku = Math.floor(Math.random() * Math.floor(99999));
     name?: string;
     price?: number;
     editing?: boolean;
+    description?: string;
+    quantity = 0;
 
     constructor(item: IItem) {
         item.editing = this.setState(item);

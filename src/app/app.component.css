@@ -1,14 +1,14 @@
 
     .main
      {
-        background-color: rgb(154, 179, 146);
+        background-color: gray;
     }
     .footer
     {
        background-color: rgb(154, 179, 146);
    }
     .container-padding {
-        margin: 12px;
+        margin: 8px;
         border: 1px;
     }
     .main-container {

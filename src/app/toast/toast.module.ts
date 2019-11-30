@@ -16,4 +16,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ToastComponent
   ]
 })
-export class ToastModule { }
+export class ToastModule {
+
+}
