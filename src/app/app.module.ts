@@ -9,12 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ToastModule } from './toast/toast.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
