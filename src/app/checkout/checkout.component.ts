@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
     this.saveCartToLocalStorage(this.cart);
   }
   saveCartToLocalStorage(cart: Array<Item>) {
-    const savedCart = localStorage.setItem('cart', JSON.stringify(cart));
-    return savedCart;
+    const shoppingCart = localStorage.setItem('cart', JSON.stringify(cart));
+    return shoppingCart;
   }
 }
