@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../home/home.modal';
 
 
 @Component({
@@ -12,6 +13,8 @@ export class CheckoutComponent implements OnInit {
 
 
   constructor() { }
+
+  cart: Array<Item> = [];
 
   ngOnInit() {
     this.cartArray = [
@@ -32,4 +35,11 @@ export class CheckoutComponent implements OnInit {
     ];
     // I wrote this just to see how the table would look like. You can delete it.
   }
-}
+  deleteItem(index: number) {
+    this.cart.splice(index, 1);
+    this.saveCartToLocalStorage(this.cart);
+  }
+  saveCartToLocalStorage(cart: Array<Item>) {
+    const shoppingCart = localStorage.setItem('cart', JSON.stringify(cart));
+    return shoppingCart;
+  }

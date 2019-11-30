@@ -8,12 +8,15 @@ import { AppRoutes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ToastModule } from './toast/toast.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BrowserAnimationsModule,
     MaterialDesignModule,
     AppRoutes,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

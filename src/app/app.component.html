@@ -2,7 +2,6 @@
 <html>
 
 <body>
-
   <div class="main-container">
     <div class="header">
       <div class="container-padding">
@@ -12,11 +11,15 @@
       <button (click)="navigateTo('checkout')" class="nav-button container-padding" type="button" mat-raised-button color="alert">
         Point of Sale
     </button>
+    <button (click)="navigateTo('about')" class="nav-button container-padding" type="button" mat-raised-button color="alert">
+        About
+    </button>
       </div>
     </div>
 
     <div class="main">
       <div class="container-padding">
+        
         <router-outlet class= "main-outlet"></router-outlet>    
         
       </div>
