@@ -13,16 +13,14 @@ export class ToastComponent implements OnInit {
 this.toastService.toastChanged.subscribe((data: any) => {
 this.toasts.push(data);
 
-
 });
+// }
+//   showToast() {
+//     this.toasts.push({
+//       type: 'info',
+//       message: `This alert will be closed in 5 seconds (added: ${new Date().toLocaleTimeString()})`,
+//       timeout: 5000
+//     });
+//   }
+  }
 }
-  // showToast() {
-  //   this.toasts.push({
-  //     type: 'info',
-  //     message: `This alert will be closed in 5 seconds (added: ${new Date().toLocaleTimeString()})`,
-  //     timeout: 5000
-  //   });
-  // }
-
-}
-

@@ -38,12 +38,11 @@ export class HomeComponent implements OnInit {
 
   saveItem(item: Item) {
     if (item.name === null || item.name === '') {
-      this.toastService.showToast('alert', 'Name must not be blank!', 3000);
-      alert('Name must not be blank!');
+      this.toastService.showToast('alert', 3000, 'Name must not be blank!');
     } else {
     if (item.price === null) {
         // need validation that item.price is <number>
-        this.toastService.showToast('alert', 'Price must not be blank!', 3000);
+        this.toastService.showToast('alert', 3000, 'Price must not be blank!');
         alert('Price must not be blank!');
       } else {
       item.editing = false;
