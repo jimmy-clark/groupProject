@@ -44,10 +44,10 @@ export class HomeComponent implements OnInit {
 
   saveItem(item: Item) {
     if (item.name === null || item.name === '') {
-      this.toastService.showToast('alert', 3000, 'Name must not be blank!');
+      this.toastService.showToast('danger', 3000, 'Name must not be blank!');
     } else {
     if (item.price === null || isNaN(item.price) === true) {
-        this.toastService.showToast('alert', 3000, 'Price must be a number and not blank!');
+        this.toastService.showToast('danger', 3000, 'Price must be a number and not blank!');
       } else {
       item.editing = false;
       this.saveItemsToLocalStorage(this.items);
