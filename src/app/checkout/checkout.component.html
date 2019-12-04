@@ -6,55 +6,20 @@
           <th scope="col">SKU</th>
           <th scope="col">Item</th>
           <th scope="col">Price</th>
-          <th scope="col">Description</th>
           <th scope="col">Quantity</th>
-          <th scope="col"></th>
+        
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cart of cartArray; let i = index">
-          <!--th *ngIf="!item.editing" scope="row">{{item.sku}}</th>
-                                <td *ngIf="!item.editing">{{item.name}}</td>
-                                <td *ngIf="!item.editing">{{item.price}}</td>
-                                <td *ngIf="!item.editing">{{item.description}}</td-->
-
-          <th scope="row">{{cart.sku}}</th>
-          <td>{{cart.item}}</td>
-          <td>{{cart.price}}</td>
-          <td>{{cart.description}}</td>
-          <input [(ngModel)]="cart.quantity" type="text" class="form-control input" placeholder="SKu" aria-label="SKU"
-            aria-describedby="basic-addon1">
-          <!--There's a gap because i decrease the size of the input box-->
-
-
-          <!--td>
-                                    <button type="button" class="btn btn-danger" (click)="deleteItem(i)">X</button>
-                                </td>
-                    
-                                <th>
-                                    <input [(ngModel)]="item.sku" type="text" class="form-control" placeholder="SKu" aria-label="SKU"
-                                        aria-describedby="basic-addon1">
-                                </th>
-                                <td>
-                                    <input [(ngModel)]="item.name" type="text" class="form-control" placeholder="Name"
-                                        aria-label="Name" aria-describedby="basic-addon1">
-                                </td>
-                                <td>
-                                    <input [(ngModel)]="item.price" type="text" class="form-control" placeholder="Price"
-                                        aria-label="Price" aria-describedby="basic-addon1">
-                                </td>
-                                <td>
-                                    <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Description"
-                                        aria-label="Description" aria-describedby="basic-addon1">
-                                </td>
-                                <td>
-                                        <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Quantity"
-                                            aria-label="Quantity" aria-describedby="basic-addon1">
-                                </td-->
+        <tr *ngFor="let item of items; let i = index">
+          <th scope="row">{{item.sku}}</th>
+          <td>{{item.name}}</td>
+          <td >{{item.price}}</td>
+          
           <td>
-            <button type="button" class="btn btn-primary" (click)="quantityPlusOne(cart)">+</button>
-            <button type="button" class="btn btn-danger" (click)="quantityMinusOne(cart)">-</button>
-            <button type="button" class="btn btn-success contact-button" (click)="saveItems(item)">Add to cart</button>
+            <button type="button" class="btn btn-primary" (click)="quantityPlusOne(i)">+</button>
+            <button type="button" class="btn btn-danger" (click)="quantityMinusOne(i)">-</button>
+          
           </td>
       </tbody>
     </table>
@@ -63,21 +28,27 @@
   <div class="cart">
     <table class="table">
       <thead class="thead-dark center">
+        CART
         <tr>
-          <th scope="col">SKU</th>
           <th scope="col">Item</th>
           <th scope="col">Price</th>
           <th scope="col">Quantity</th>
+          <th>
+            <button type="button" class="btn btn-success contact-button" (click)="calculateTotal()">Checkout</button>
+        </th>
+        
 
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cart of cartArray; let i = index">
-          <th scope="row">{{cart.SKU}}</th>
-          <td>{{cart.Item}}</td>
-          <td>{{cart.Price}}</td>
-          <td>{{cart.Quantity}}</td>
+        <tr *ngFor="let item of items; let i = index">
+          <th *ngIf="item.quantity != 0" scope="row">{{item.name}}</th>
+          <td *ngIf="item.quantity != 0">{{item.price}}</td>
+          <td *ngIf="item.quantity != 0">{{item.quantity}}</td>
+          <td *ngIf="item.quantity != 0">{{item.subTotal}}</td>
+         
         </tr>
+        
       </tbody>
     </table>
   </div>

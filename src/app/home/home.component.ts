@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Item, IItem } from './home.modal';
+import { Item } from './home.modal';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from '../toast/toast.service';
-
+import { RouterModule } from '@angular/router';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +13,12 @@ export class HomeComponent implements OnInit {
 
   items: Array<Item> = [];
 
-  constructor(private http: HttpClient, private toastService: ToastService) { }
+  constructor(
+    private http: HttpClient,
+    private toastService: ToastService,
+    private router: RouterModule,
+    private appComponent: AppComponent
+    ) { }
 
   async ngOnInit() {
     this.loadItems();
@@ -40,10 +46,8 @@ export class HomeComponent implements OnInit {
     if (item.name === null || item.name === '') {
       this.toastService.showToast('alert', 3000, 'Name must not be blank!');
     } else {
-    if (item.price === null) {
-        // need validation that item.price is <number>
-        this.toastService.showToast('alert', 3000, 'Price must not be blank!');
-        alert('Price must not be blank!');
+    if (item.price === null || isNaN(item.price) === true) {
+        this.toastService.showToast('alert', 3000, 'Price must be a number and not blank!');
       } else {
       item.editing = false;
       this.saveItemsToLocalStorage(this.items);
@@ -65,7 +69,6 @@ export class HomeComponent implements OnInit {
   }
   addItem() {
     this.items.unshift(new Item({
-    // sku: Math.floor(Math.random() * 999999 + 100000)
     }));
 }
 
@@ -85,4 +88,5 @@ editItem(item: Item) {
 }
 
 }
+
 

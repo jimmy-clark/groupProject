@@ -9,10 +9,13 @@
                     <th scope="col">Item</th>
                     <th scope="col">Price</th>
                     <th scope="col">Description</th>
-                    <th scope="col">
-                        <button type="button" class="btn btn-secondary btn-sm" (click)="addItem()">
+                    <th class= "btn-group" scope="col">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="addItem()">
                             <mat-icon>add</mat-icon>
                         </button>
+                        <button type="button" class="btn btn-success btn-sm" (click)="sendToCheckout()">
+                                Send to Checkout
+                            </button>
                     </th>
                 </tr>
             </thead>

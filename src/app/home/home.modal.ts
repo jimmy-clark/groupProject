@@ -6,6 +6,7 @@ export interface IItem {
     editing?: boolean;
     description?: string;
     quantity?: number;
+    subTotal?: number;
 }
 export class Item {
     sku = Math.floor(Math.random() * Math.floor(99999));
@@ -14,6 +15,7 @@ export class Item {
     editing?: boolean;
     description?: string;
     quantity = 0;
+    subTotal = this.quantity * this.price;
 
     constructor(item: IItem) {
         item.editing = this.setState(item);
