@@ -13,10 +13,6 @@ const routes: Routes = [
         component: CheckoutComponent
     },
     {
-        path: '**',
-        component: HomeComponent
-    },
-    {
         path: 'items',
         component: HomeComponent
     },

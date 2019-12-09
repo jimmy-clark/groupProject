@@ -4,6 +4,7 @@ import { ToastService } from '../toast/toast.service';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-checkout',
@@ -19,7 +20,8 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private toastService: ToastService,
     private http: HttpClient,
-    private router: RouterModule
+    private router: RouterModule,
+    private appComponent: AppComponent
   ) { }
 
   items: Array<Item> = [];
@@ -102,7 +104,7 @@ export class CheckoutComponent implements OnInit {
   }
   readyForPayment() {
 const data = this.calculateTotal();
-// this.router.navigateTo('')
 localStorage.setItem('payment', JSON.stringify(data));
+this.appComponent.navigateTo('payment');
   }
 }
