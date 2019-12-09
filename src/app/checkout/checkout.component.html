@@ -18,6 +18,7 @@
           
           <td>
             <button type="button" class="btn btn-primary" (click)="quantityPlusOne(i)">+</button>
+            <div> {{item.quantity}} </div>
             <button type="button" class="btn btn-danger" (click)="quantityMinusOne(i)">-</button>
           
           </td>
@@ -28,13 +29,14 @@
   <div class="cart">
     <table class="table">
       <thead class="thead-dark center">
-        CART
+        <h5>Cart</h5>
+
         <tr>
           <th scope="col">Item</th>
           <th scope="col">Price</th>
           <th scope="col">Quantity</th>
-          <th>
-            <button type="button" class="btn btn-success contact-button" (click)="calculateTotal()">Checkout</button>
+          <th scope="col">
+            <button type="button" class="btn btn-success contact-button" (click)="readyForPayment()">Checkout</button> 
         </th>
         
 
@@ -46,7 +48,7 @@
           <td *ngIf="item.quantity != 0">{{item.price}}</td>
           <td *ngIf="item.quantity != 0">{{item.quantity}}</td>
           <td *ngIf="item.quantity != 0">{{item.subTotal}}</td>
-         
+  
         </tr>
         
       </tbody>

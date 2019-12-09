@@ -10,7 +10,7 @@
       <button (click)="navigateTo('checkout')" class="nav-button container-padding" type="button" mat-raised-button color="alert">
         Point of Sale
     </button>
-    <button (click)="navigateTo('about')" class="nav-button container-padding" type="button" mat-raised-button color="alert">
+    <button (click)="navigateTo('payment')" class="nav-button container-padding" type="button" mat-raised-button color="alert">
         About
     </button>
       </div>
@@ -19,6 +19,8 @@
       <div class="container-padding">
         
         <router-outlet class= "main-outlet"></router-outlet>    
+        <app-payment></app-payment>
+
         
       </div>
       <div class="container-padding">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Item, IItem } from '../home/home.modal';
 import { ToastService } from '../toast/toast.service';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-checkout',
@@ -16,7 +18,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private toastService: ToastService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: RouterModule
   ) { }
 
   items: Array<Item> = [];
@@ -25,7 +28,6 @@ export class CheckoutComponent implements OnInit {
 
     this.loadItems();
 
-    // I wrote this just to see how the table would look like. You can delete it.
   }
   deleteItem(index: number) {
     this.items.splice(index, 1);
@@ -37,12 +39,14 @@ export class CheckoutComponent implements OnInit {
   }
   quantityPlusOne(i: number) {
     this.items[i].quantity += 1;
+    this.saveCartToLocalStorage(this.items);
   }
   quantityMinusOne(i: number) {
     if (this.items[i].quantity > 0) {
-    this.items[i].quantity -= 1;
+      this.items[i].quantity -= 1;
     } else {
       this.toastService.showToast('danger', 2500, 'Quantity cannot be below 0!');
+      this.saveCartToLocalStorage(this.items);
     }
   }
   getItemsFromLocalStorage(key: string) {
@@ -71,19 +75,34 @@ export class CheckoutComponent implements OnInit {
     return data;
   }
   calculateTotal() {
-    if (this.items.length > 0) {
-      let total = 0;
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < this.items.length - 1; i++) {
-
-        if (this.items[i].quantity >= 0 && this.items[i].quantity !== null) {
-          total = this.items[i].quantity * this.items[i].price;
-        }
-        console.log('from calculate>>>>>>>>>>>>>>', total);
-        return total;
+    let owed = 0;
+    let totalItems = 0;
+    console.log(this.items.length);
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.items.length; i++) { // loops through each item to add up the total owed
+      if (this.items[i].quantity > 0) {
+        owed += (this.items[i].price * this.items[i].quantity);
+        totalItems += this.items[i].quantity;
       }
-    } else {
-      this.toastService.showToast('danger', 5000, 'cart empty');
     }
+    const roundedOwed = owed.toFixed(2);
+    const salesTax: number = owed * 0.0795;
+    const roundedSalesTax = salesTax.toFixed(2);
+    const total = owed + salesTax;
+    const totalRounded = total.toFixed(2);
+    // navigate to payment // navigateTo() wont work
+    return {
+      numberOfItems: totalItems,
+      subtotalDue: roundedOwed,
+      salesTax: roundedSalesTax,
+      totalDue: totalRounded
+
+    };
+
+  }
+  readyForPayment() {
+const data = this.calculateTotal();
+// this.router.navigateTo('')
+localStorage.setItem('payment', JSON.stringify(data));
   }
 }

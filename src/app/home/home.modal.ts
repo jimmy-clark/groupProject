@@ -15,11 +15,12 @@ export class Item {
     editing?: boolean;
     description?: string;
     quantity = 0;
-    subTotal = this.quantity * this.price;
+    subTotal = 0;
 
     constructor(item: IItem) {
         item.editing = this.setState(item);
         Object.assign(this, item);
+        this.subTotal = this.price * this.quantity;
     }
 
     setState(item: IItem) {
