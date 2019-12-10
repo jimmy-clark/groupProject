@@ -25,10 +25,11 @@ export class CheckoutComponent implements OnInit {
   ) { }
 
   items: Array<Item> = [];
-
+cartEmpty = true;
   async ngOnInit() {
 
     this.loadItems();
+    this.cartEmpty = this.isCartEmpty();
 
   }
   deleteItem(index: number) {
@@ -48,6 +49,7 @@ export class CheckoutComponent implements OnInit {
     if (this.items[i].quantity > 0) {
       this.items[i].quantity -= 1;
       this.saveCartToLocalStorage(this.items);
+      this.isCartEmpty();
 
     } else {
       this.toastService.showToast('danger', 2500, 'Quantity cannot be below 0!');
@@ -141,6 +143,7 @@ this.appComponent.navigateTo('payment');
   removeFromCart(index: number) {
     this.items[index].quantity = 0;
     this.saveCartToLocalStorage(this.items);
+    this.isCartEmpty();
   }
   updateSubtotal() {
     for (let i = 0; this.items.length > 0; i++) {
@@ -149,11 +152,14 @@ this.appComponent.navigateTo('payment');
      this.items[i].subTotal = newSubtotal;
     }}}
 isCartEmpty() {
-    let cartEmpty: boolean;
     for (let i = 0; this.items.length > 0; i++) {
-      if (this.items[i].quantity > 0) {cartEmpty = false;
-      } else {cartEmpty = true; }
+      if (this.items[i].quantity > 0) {
+        this.cartEmpty = false;
+      } else {
+        this.cartEmpty = true;
       }
-    return cartEmpty;
+      }
+    console.log('cart is empty is ', this.cartEmpty);
+    return this.cartEmpty;
   }
 }
