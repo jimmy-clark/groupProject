@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
 
+
 * {
     margin: 0px;
     padding: 0px;
@@ -27,10 +28,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 100%;
 }
 .center {
-    text-align: center;
+    box-align: center;
+    display: inline-block;
 }
 .box-shadow {
 -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.alert-container {
+    width:auto;
+    position: absolute;
+    max-width: 500px;
+    min-width: 500px;
+    z-index: 9999;
 }

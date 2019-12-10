@@ -1,15 +1,18 @@
 
+    .header {
+        grid-template-columns: 1.5fr 2fr 1fr;
+        display: grid;
+        width: 100%;
+    }
     .main
      {
-        background-color: gray;
+        background-color: cadetblue;
     }
-    .footer
-    {
-       background-color: rgb(154, 179, 146);
-   }
+    
     .container-padding {
-        margin: 8px;
-        border: 1px;
+        margin: 10px;
+        border: 2px;
+        
     }
     .main-container {
         display: grid;

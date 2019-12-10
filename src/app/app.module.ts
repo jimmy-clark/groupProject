@@ -15,13 +15,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ToastModule } from './toast/toast.module';
 import { AboutComponent } from './about/about.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CheckoutComponent,
-    AboutComponent
+    AboutComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { AboutComponent } from './about/about.component';
     MaterialDesignModule,
     AppRoutes,
     HttpClientModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

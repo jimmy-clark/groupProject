@@ -1,34 +1,35 @@
-
-
 <div>
     <div>
-        <table class="table ">
-            <thead class="table-dark">
+        <table class="table table-striped">
+            <thead class="table-dark table-striped">
                 <tr>
                     <th scope="col">SKU</th>
                     <th scope="col">Item</th>
                     <th scope="col">Price</th>
                     <th scope="col">Description</th>
-                    <th scope="col">
-                        <button type="button" class="btn btn-secondary btn-sm" (click)="addItem()">
+                    <th class="btn-group" scope="col">
+                        <button type="button" [disabled]="disableFinish" class="btn btn-primary btn-sm" (click)="addItem()">
                             <mat-icon>add</mat-icon>
+                        </button>
+                        <button type="button" [disabled]="disableFinish" class="btn btn-success btn-sm" (click)="sendToCheckout()">
+                            Finish Editing
                         </button>
                     </th>
                 </tr>
             </thead>
-            <tbody class="table-light">
+            <tbody class="table-light table-striped">
                 <!-- normal -->
-                <tr *ngFor="let item of items; let i = index">
-                    <th *ngIf="!item.editing" scope="row">{{item.sku}}</th>
+                <tr scope="row" *ngFor="let item of items; let i = index">
+                    <th scope="row" *ngIf="!item.editing" scope="row">{{item.sku}}</th>
                     <td *ngIf="!item.editing">{{item.name}}</td>
-                    <td *ngIf="!item.editing">{{item.price}}</td>
+                    <td *ngIf="!item.editing">$ {{item.price}}</td>
                     <td *ngIf="!item.editing">{{item.description}}</td>
                     <td *ngIf="!item.editing">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-danger" (click)="deleteItem(i)">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button type="button" class="btn btn-primary" (click)="editItem(item)">
+                            <button type="button" [disabled]="disableFinish" class="btn btn-primary" (click)="editItem(item)">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
@@ -52,12 +53,13 @@
                     </td>
                     <td *ngIf="item.editing">
                         <div class="btn-group">
+                            <button type="button" [disabled]="disableFinish" class="btn btn-danger n" (click)="deleteItem(i)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
                             <button type="button" class="btn btn-success contact-button" (click)="saveItem(item)">
                                 <mat-icon>save</mat-icon>
                             </button>
-                            <button type="button" class="btn btn-danger n" (click)="deleteItem(i)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
+
                         </div>
 
                     </td>
@@ -68,4 +70,3 @@
 
     </div>
 </div>
-
