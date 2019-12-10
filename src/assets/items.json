@@ -3,15 +3,15 @@
         "sku": 100001,
         "name": "Coke",
         "price": 9.99,
-        "description": "12 count",
+        "description": "12 CT",
         "editing": false,
         "quantity": 0
     },
     {
         "sku": 100002,
-        "name": "Toothbrush",
-        "price": 1.99,
-        "description": "3 pack",
+        "name": "Deodarant",
+        "price": 1.49,
+        "description": "Irish Spring",
         "editing": false,
         "quantity": 0
     },
@@ -20,6 +20,54 @@
         "name": "Flashlight",
         "price": 4.99,
         "description": "Batteries included",
+        "editing": false,
+        "quantity": 0
+    },
+    {
+        "sku": 100004,
+        "name": "Trash Bags",
+        "price": 12.49,
+        "description": "90 CT",
+        "editing": false,
+        "quantity": 0
+    },
+    {
+        "sku": 100005,
+        "name": "Dish Soap",
+        "price": 3.00,
+        "description": "Dawn",
+        "editing": false,
+        "quantity": 0
+    },
+    {
+        "sku": 100006,
+        "name": "AAA Batteries",
+        "price": 4.99,
+        "description": "20 CT",
+        "editing": false,
+        "quantity": 0
+    },
+    {
+        "sku": 100007,
+        "name": "Chex Mix",
+        "price": 1.29,
+        "description": "Original",
+        "editing": false,
+        "quantity": 0
+    },
+    {
+        "sku": 100008,
+        "name": "Skittles",
+        "price": 0.99,
+        "description": "Taste the Rainbow",
+        "editing": false,
+        "quantity": 0
+    },
+    {
+        "sku": 100009,
+        "name": "Snickers",
+        "price": 0.99,
+        "description": "You're not you when you're hungry",
         "editing": false,
         "quantity": 0
     }

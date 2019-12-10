@@ -2,3 +2,7 @@
     display: grid;
     grid-template-columns: 6fr 4fr;
 }
+.center {
+    text-align: center;
+    display: inline;
+}

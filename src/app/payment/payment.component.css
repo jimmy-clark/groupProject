@@ -1,3 +1,7 @@
 .container-padding {
     padding: 3px;
 }
+.center {
+    text-align: center;
+    display: inline;
+}

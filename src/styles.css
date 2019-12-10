@@ -28,7 +28,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 100%;
 }
 .center {
-    text-align: center;
+    box-align: center;
+    display: inline-block;
 }
 .box-shadow {
 -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);

@@ -1,55 +1,64 @@
-
 <table class="table ">
     <thead class="table-dark">
         <tr>
-            <th scope="col"></th>
+            <th scope="col">
+                    <button type="button" (click)="navigateTo('checkout')" class="btn btn-danger btn-sm">Back to Cart</button>
+            </th>
             <th scope="col">Subtotal</th>
             <th scope="col">Sales Tax</th>
             <th scope="col">Total Amount</th>
-            
+
         </tr>
     </thead>
     <tbody class="table-light">
         <tr>
             <th scope="row"> {{data.numberOfItems}} Items Purchaced</th>
-            <th scope="row"> {{data.subtotalDue}} </th>            
-            <th scope="row">{{data.salesTax}}</th>            
-            <th scope="row">{{data.totalDue}}</th>      
+            <th scope="row"> {{data.subtotalDue}} </th>
+            <th scope="row">{{data.salesTax}}</th>
+            <th scope="row">{{data.totalDue}}</th>
         </tr>
     </tbody>
 </table>
-        <tr class="container-padding">
-                <th>
-                        <form class="form-inline">
-                                <div class="form-group mx-sm-3 mb-2">
-                                  <input type="password" class="form-control" id="inputPassword2" placeholder="Custom Amount">
-                                </div>
-                                <button type="submit" class="btn btn-primary mb-2">
-                                    <mat-icon>
-                                        done
-                                    </mat-icon>
-                                </button>
-                              </form>
-                        </th>
-                <th scope="col">
-                    <button type="button" (click)="change(100)" class="btn btn-dark">$100</button>
-                </th>
-                <th scope="col">
-                        <button type="button" (click)="change(50)" class="btn btn-dark">$50</button>
-                </th>
-                <th scope="col">                    
-                    <button type="button" (click)="change(20)" class="btn btn-dark">$20</button>
-                </th>
-                <th scope="col">
-                        <button type="button" (click)="change(10)" class="btn btn-dark">$10</button>
-                </th>
-                <th scope="col">
-                        <button type="button" (click)="change(5)" class="btn btn-dark">$5</button>
-                </th>
-                <th scope="col">
-                        <button type="button" (click)="change(1)" class="btn btn-dark">$1</button>
-                </th>
-                
-            </tr>
-   
-        
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input #customBar [(ngModel)]='customValue' name='customBar' [value]='customValue'
+                            (keyup.enter)='change($event)'>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary mb-2" (click)='change(customValue)' id='submit-search'
+                        for='searchBar'>
+                         Submit Custom Amount
+                    </button>
+                </form>
+            </th>
+            <th scope="col">
+                <button type="button" [disabled]="data.hundred" (click)="change(100)" class="btn btn-success btn-lg">$100</button>
+            </th>
+            <th scope="col">
+                <button type="button" [disabled]="data.hundred" (click)="change(50)" class="btn btn-success btn-lg">$50</button>
+            </th>
+            <th scope="col">
+                <button type="button" [disabled]="data.twenty" (click)="change(20)" class="btn btn-success btn-lg">$20</button>
+            </th>
+            <th scope="col">
+                <button type="button" [disabled]="data.ten" (click)="change(10)" class="btn btn-success btn-lg">$10</button>
+            </th>
+            <th scope="col">
+                <button type="button" [disabled]="data.five" (click)="change(5)" class="btn btn-success btn-lg">$5</button>
+            </th>
+            <th scope="col">
+                <button type="button" [disabled]="data.one" (click)="change(1)" class="btn btn-success btn-lg">$1</button>
+            </th>
+        </tr>
+    </thead>
+</table>
+<div class="center">
+    <h1>{{final}}</h1>
+    <div *ngIf="finalExitShow">
+            <button type="button" (click)="navigateTo('')" class="btn btn-primary btn-lg">Return to Point of Sale</button>
+    </div>
+</div>
+

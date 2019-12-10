@@ -12,6 +12,7 @@ import { AppComponent } from '../app.component';
 export class HomeComponent implements OnInit {
 
   items: Array<Item> = [];
+  disableFinish = false;
 
   constructor(
     private http: HttpClient,
@@ -51,6 +52,7 @@ export class HomeComponent implements OnInit {
       } else {
       item.editing = false;
       this.saveItemsToLocalStorage(this.items);
+      this.disableFinish = false;
       }
     }
 
@@ -85,8 +87,11 @@ export class HomeComponent implements OnInit {
   }
 editItem(item: Item) {
   item.editing = true;
+  this.disableFinish = true;
 }
-
+sendToCheckout() {
+  this.appComponent.navigateTo('checkout');
+}
 }
 
 

@@ -42,14 +42,17 @@ export class CheckoutComponent implements OnInit {
   quantityPlusOne(i: number) {
     this.items[i].quantity += 1;
     this.saveCartToLocalStorage(this.items);
+    this.updateSubtotal();
   }
   quantityMinusOne(i: number) {
     if (this.items[i].quantity > 0) {
       this.items[i].quantity -= 1;
+      this.saveCartToLocalStorage(this.items);
+
     } else {
       this.toastService.showToast('danger', 2500, 'Quantity cannot be below 0!');
-      this.saveCartToLocalStorage(this.items);
     }
+    this.updateSubtotal();
   }
   getItemsFromLocalStorage(key: string) {
     const savedItem = JSON.parse(localStorage.getItem(key));
@@ -59,7 +62,6 @@ export class CheckoutComponent implements OnInit {
     const savedItem = this.getItemsFromLocalStorage('items');
     if (savedItem && savedItem.length > 0) {
       this.items = savedItem;
-      console.log('from checkout.loadItems()', savedItem);
     } else {
       this.items = await this.loadItemsFromFile();
     }
@@ -92,12 +94,41 @@ export class CheckoutComponent implements OnInit {
     const roundedSalesTax = salesTax.toFixed(2);
     const total = owed + salesTax;
     const totalRounded = total.toFixed(2);
-    // navigate to payment // navigateTo() wont work
+    let Disable1 = false;
+    let Disable5 = false;
+    let Disable10 = false;
+    let Disable20 = false;
+    let Disable50 = false;
+    let Disable100 = false;
+    if (total > 1) {
+      Disable1 = true;
+    }
+    if (total > 5) {
+      Disable5 = true;
+    }
+    if (total > 10) {
+      Disable10 = true;
+    }
+    if (total > 20) {
+      Disable20 = true;
+    }
+    if (total > 50) {
+      Disable50 = true;
+    }
+    if (total > 100) {
+      Disable100 = true;
+    }
     return {
       numberOfItems: totalItems,
       subtotalDue: roundedOwed,
       salesTax: roundedSalesTax,
-      totalDue: totalRounded
+      totalDue: totalRounded,
+      one: Disable1,
+      five: Disable5,
+      ten: Disable10,
+      twenty: Disable20,
+      fifty: Disable50,
+      hundred: Disable100
 
     };
 
@@ -106,5 +137,23 @@ export class CheckoutComponent implements OnInit {
 const data = this.calculateTotal();
 localStorage.setItem('payment', JSON.stringify(data));
 this.appComponent.navigateTo('payment');
+  }
+  removeFromCart(index: number) {
+    this.items[index].quantity = 0;
+    this.saveCartToLocalStorage(this.items);
+  }
+  updateSubtotal() {
+    for (let i = 0; this.items.length > 0; i++) {
+    if (this.items[i].quantity > 0) {
+     const newSubtotal = this.items[i].price * this.items[i].quantity;
+     this.items[i].subTotal = newSubtotal;
+    }}}
+isCartEmpty() {
+    let cartEmpty: boolean;
+    for (let i = 0; this.items.length > 0; i++) {
+      if (this.items[i].quantity > 0) {cartEmpty = false;
+      } else {cartEmpty = true; }
+      }
+    return cartEmpty;
   }
 }

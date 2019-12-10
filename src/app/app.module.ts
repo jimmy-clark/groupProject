@@ -32,7 +32,7 @@ import { PaymentComponent } from './payment/payment.component';
     MaterialDesignModule,
     AppRoutes,
     HttpClientModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

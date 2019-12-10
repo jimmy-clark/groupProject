@@ -7,6 +7,7 @@ export interface IItem {
     description?: string;
     quantity?: number;
     subTotal?: number;
+    disableCounterDown?: boolean;
 }
 export class Item {
     sku = Math.floor(Math.random() * Math.floor(99999));
@@ -16,6 +17,7 @@ export class Item {
     description?: string;
     quantity = 0;
     subTotal = 0;
+    disableCounterDown = false;
 
     constructor(item: IItem) {
         item.editing = this.setState(item);

@@ -1,6 +1,6 @@
 <div class="column">
   <div>
-    <table class="table table-sm">
+    <table class="table table-dark table-striped">
       <thead>
         <tr>
           <th scope="col">SKU</th>
@@ -15,39 +15,45 @@
           <th scope="row">{{item.sku}}</th>
           <td>{{item.name}}</td>
           <td >{{item.price}}</td>
-          
-          <td>
-            <button type="button" class="btn btn-primary" (click)="quantityPlusOne(i)">+</button>
-            <div> {{item.quantity}} </div>
-            <button type="button" class="btn btn-danger" (click)="quantityMinusOne(i)">-</button>
-          
+          <td class="btn btn-group">
+            <button type="button"  class="btn btn-primary" (click)="quantityPlusOne(i)">+</button>
+            <button type="button" [disabled]="this.quantity==0" class="btn btn-danger" (click)="quantityMinusOne(i)">-</button>
           </td>
       </tbody>
     </table>
   </div>
   <!-- Seceond table -->
+  
   <div class="cart">
-    <table class="table">
-      <thead class="thead-dark center">
-        <h5>Cart</h5>
-
+      <div class="center">
+          <h1>Cart</h1>
+      </div>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+       
         <tr>
           <th scope="col">Item</th>
           <th scope="col">Price</th>
           <th scope="col">Quantity</th>
           <th scope="col">
-            <button type="button" class="btn btn-success contact-button" (click)="readyForPayment()">Checkout</button> 
+            <button type="button" class="btn btn-sm btn-success contact-button" (click)="readyForPayment()">Pay</button> 
         </th>
-        
+        <th></th>
 
         </tr>
       </thead>
-      <tbody>
+      <tbody class='table-dark'>
         <tr *ngFor="let item of items; let i = index">
           <th *ngIf="item.quantity != 0" scope="row">{{item.name}}</th>
           <td *ngIf="item.quantity != 0">{{item.price}}</td>
           <td *ngIf="item.quantity != 0">{{item.quantity}}</td>
           <td *ngIf="item.quantity != 0">{{item.subTotal}}</td>
+          <td *ngIf="item.quantity != 0">
+              <button type="button" class="btn btn-sm btn-danger" (click)="removeFromCart(i)">
+                  <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+
   
         </tr>
         
