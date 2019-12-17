@@ -5,3 +5,20 @@
 <p style="text-align: center;"><a href="https://docs.google.com/presentation/d/1H0-HNwPd6J17MyRk8Y6F95GD7ckS3TA5fxiwBNxswk4/edit?usp=sharing" target="_blank" rel="noopener">Google Presentation</a></p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
+
+<app-flex-modal #flex1
+  [transition]="'slide-in-right'"  
+  [modalStyle]="{'border':'5px solid #CCC'}"
+  [showToolbar]="true" 
+  [showDefaultAction]="false" 
+  [modalID]="'error-modal'" 
+  [width]="'615px'"
+  [height]="'auto'">
+  <span class="modal-title">Warning</span>
+  <div class="modal-content">
+    {{errorMessage}}
+  </div>
+  <div class="modal-action">
+      <button mat-raised-button color="primary" (click)="flex1.modal.cancel()">Close</button>
+  </div>
+</app-flex-modal>

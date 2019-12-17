@@ -26,10 +26,10 @@
                     <td *ngIf="!item.editing">{{item.description}}</td>
                     <td *ngIf="!item.editing">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-danger" (click)="deleteItem(i)">
+                            <button type="button" class="btn btn-sm btn-danger" (click)="deleteItem(i)">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button type="button" [disabled]="disableFinish" class="btn btn-primary" (click)="editItem(item)">
+                            <button type="button" [disabled]="disableFinish" class="btn btn-sm btn-primary" (click)="editItem(item)">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
