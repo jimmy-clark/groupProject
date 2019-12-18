@@ -1,0 +1,17 @@
+.name {
+    text-shadow: 2px 2px 10px #FF0000;
+    font-size: 15px;
+    text-decoration: underline overline;
+}
+.link {
+    text-shadow: 2px 2px 11px rgb(0, 0, 0);
+    font-size: 20px;
+
+}
+.title {
+    text-shadow: 2px 2px 10px #FF0000;
+    
+}
+.goal {
+    text-shadow: 2px 2px 12px rgb(0, 255, 34);
+}

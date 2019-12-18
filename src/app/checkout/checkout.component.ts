@@ -83,7 +83,6 @@ cartEmpty = true;
   calculateTotal() {
     let owed = 0;
     let totalItems = 0;
-    console.log(this.items.length);
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.items.length; i++) { // loops through each item to add up the total owed
       if (this.items[i].quantity > 0) {
@@ -159,7 +158,6 @@ isCartEmpty() {
         this.cartEmpty = true;
       }
       }
-    console.log('cart is empty is ', this.cartEmpty);
     return this.cartEmpty;
   }
 }

@@ -28,7 +28,6 @@ export class PaymentComponent implements OnInit {
     this.data = await JSON.parse(localStorage.getItem('payment'));
   }
   change(outOf: number) {
-    console.log(outOf);
     const totalDue = this.data.totalDue;
     const leftOver0 = outOf - totalDue;
     const leftOver = leftOver0.toFixed(2);

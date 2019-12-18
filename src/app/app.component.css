@@ -1,30 +1,44 @@
 
-    .header {
+.header {
         grid-template-columns: 1.5fr 2fr 1fr;
         display: grid;
         width: 100%;
-    }
-    .main
-     {
-        background-color: cadetblue;
+ }
+ .main {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 0fr 0fr 6fr;
+   
     }
     
-    .container-padding {
+.container-padding {
         margin: 10px;
         border: 2px;
         
     }
-    .main-container {
-        display: grid;
-        height: 100%;
-        width: 100%;
-        grid-template-rows: 1fr 12fr;
+.main-container {
+    display: grid;
+    grid-template-rows: 1fr .5fr;
+    background-color: cadetblue;
+    overflow: auto
+
     
     }
-    .pull-right {
+.pull-right {
         float: right;
     }
 .main-outlet{
     display: none;
 }
+.nav-item:hover {
+    background-color: lightblue;
+}
+.navbar-brand {
+    text-shadow: 2px 2px 16px rgb(0, 255, 13);
+}
+.nav-link {
+    text-shadow: 2px 2px 8px darkblue;
+}
+
 
