@@ -61,3 +61,37 @@
     </div>
 </div>
 
+
+<app-flex-modal #flex1
+  [transition]="'slide-in-right'"  
+  [modalStyle]="{'border':'5px solid #CCC'}"
+  [showToolbar]="true" 
+  [showDefaultAction]="false" 
+  [modalID]="'error-modal'" 
+  [width]="'615px'"
+  [height]="'auto'">
+  <span class="modal-title">Warning</span>
+  <div class="modal-content">
+    {{errorMessage}}
+  </div>
+  <div class="modal-action">
+      <button mat-raised-button color="primary" (click)="flex1.modal.cancel()">Close</button>
+  </div>
+</app-flex-modal>
+
+<app-flex-modal #flex2
+  [transition]="'slide-in-right'"  
+  [modalStyle]="{'border':'5px solid #CCC'}"
+  [showToolbar]="true" 
+  [showDefaultAction]="false" 
+  [modalID]="'success-modal'" 
+  [width]="'615px'"
+  [height]="'auto'">
+  <span class="modal-title">Checkout Complete</span>
+  <div class="modal-content">
+    {{errorMessage}}
+  </div>
+  <div class="modal-action">
+      <button mat-raised-button color="primary" (click)="navigateTo('checkout')">Go to Home</button>
+  </div>
+</app-flex-modal>

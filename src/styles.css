@@ -43,3 +43,13 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     min-width: 500px;
     z-index: 9999;
 }
+.modal-content {
+    background: none;
+    
+}
+
+.modal-title {
+    color: red;
+    font-weight: bold;
+    
+  }

@@ -16,6 +16,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ToastModule } from './toast/toast.module';
 import { AboutComponent } from './about/about.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SharedComponentsModule } from './shared-components/shared-components.module';
+import { SharedServicesModule } from './shared-services/shared-services.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { PaymentComponent } from './payment/payment.component';
     AppRoutes,
     HttpClientModule,
     ToastModule,
+    SharedComponentsModule,
+    SharedServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

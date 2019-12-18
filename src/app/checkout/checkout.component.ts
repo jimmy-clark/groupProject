@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { AppComponent } from '../app.component';
+import { FlexModalService } from '../shared-components/flex-modal/flex-modal.service';
 
 @Component({
   selector: 'app-checkout',
@@ -16,12 +17,14 @@ export class CheckoutComponent implements OnInit {
   cartArray: Array<IItem> = [];
 
   HomeComponent: any;
+  errorMessage = '';
 
   constructor(
     private toastService: ToastService,
     private http: HttpClient,
     private router: RouterModule,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private flexModal: FlexModalService
   ) { }
 
   items: Array<Item> = [];
@@ -52,7 +55,8 @@ cartEmpty = true;
       this.isCartEmpty();
 
     } else {
-      this.toastService.showToast('danger', 2500, 'Quantity cannot be below 0!');
+      this.errorMessage = 'Quantity is already 0! Try removing another item';
+      this.flexModal.openDialog('error-modal', null);
     }
     this.updateSubtotal();
   }
@@ -137,6 +141,7 @@ cartEmpty = true;
   readyForPayment() {
 const data = this.calculateTotal();
 localStorage.setItem('payment', JSON.stringify(data));
+console.log('readyforpaymentruns');
 this.appComponent.navigateTo('payment');
   }
   removeFromCart(index: number) {
