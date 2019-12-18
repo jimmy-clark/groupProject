@@ -32,7 +32,6 @@ cartEmpty = true;
   async ngOnInit() {
 
     this.loadItems();
-    this.cartEmpty = this.isCartEmpty();
 
   }
   deleteItem(index: number) {
@@ -52,7 +51,6 @@ cartEmpty = true;
     if (this.items[i].quantity > 0) {
       this.items[i].quantity -= 1;
       this.saveCartToLocalStorage(this.items);
-      this.isCartEmpty();
 
     } else {
       this.errorMessage = 'Quantity is already 0! Try removing another item';
@@ -123,6 +121,7 @@ cartEmpty = true;
     if (total > 100) {
       Disable100 = true;
     }
+
     return {
       numberOfItems: totalItems,
       subtotalDue: roundedOwed,
@@ -147,7 +146,7 @@ this.appComponent.navigateTo('payment');
   removeFromCart(index: number) {
     this.items[index].quantity = 0;
     this.saveCartToLocalStorage(this.items);
-    this.isCartEmpty();
+
   }
   updateSubtotal() {
     for (let i = 0; this.items.length > 0; i++) {
@@ -155,14 +154,5 @@ this.appComponent.navigateTo('payment');
      const newSubtotal = this.items[i].price * this.items[i].quantity;
      this.items[i].subTotal = newSubtotal;
     }}}
-isCartEmpty() {
-    for (let i = 0; this.items.length > 0; i++) {
-      if (this.items[i].quantity > 0) {
-        this.cartEmpty = false;
-      } else {
-        this.cartEmpty = true;
-      }
-      }
-    return this.cartEmpty;
-  }
+
 }

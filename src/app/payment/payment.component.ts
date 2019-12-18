@@ -53,5 +53,8 @@ export class PaymentComponent implements OnInit {
   navigateTo(path: string) {
     this.appComponent.navigateTo(path);
   }
+resetCart() {
 
+  this.navigateTo('home');
+}
 }

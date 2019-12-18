@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { ToastService } from '../toast/toast.service';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { FlexModalService } from '../shared-components/flex-modal/flex-modal.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,13 +15,15 @@ export class HomeComponent implements OnInit {
 
   items: Array<Item> = [];
   disableFinish = false;
+  errorMessage = '';
 
   constructor(
     private http: HttpClient,
     private toastService: ToastService,
     private router: RouterModule,
-    private appComponent: AppComponent
-    ) { }
+    private appComponent: AppComponent,
+    private flexModal: FlexModalService
+  ) { }
 
   async ngOnInit() {
     this.loadItems();
@@ -44,18 +48,25 @@ export class HomeComponent implements OnInit {
   }
 
   saveItem(item: Item) {
-    if (item.name === null || item.name === '') {
-      this.toastService.showToast('danger', 3000, 'Name must not be blank!');
+    if (item.name === null || item.name === '' || item === null) {
+      this.errorMessage = 'Name cannot be blank!';
+      this.flexModal.openDialog('error-modal', null);
     } else {
-    if (item.price === null || isNaN(item.price) === true) {
-        this.toastService.showToast('danger', 3000, 'Price must be a number and not blank!');
+     if (isNaN(item.price) === true) {
+      this.errorMessage = 'The price must be a number!';
+      this.flexModal.openDialog('error-modal', null);
+     } else {
+      if (item.price === null) {
+        this.errorMessage = 'The price cannot be blank!';
+        this.flexModal.openDialog('error-modal', null);
       } else {
-      item.editing = false;
-      this.saveItemsToLocalStorage(this.items);
-      this.disableFinish = false;
+        this.toastService.showToast('success', 3000, 'Save Successful');
+        item.editing = false;
+        this.saveItemsToLocalStorage(this.items);
+        this.disableFinish = false;
       }
+     }
     }
-
   }
   sortBySKU(items: Array<Item>) {
     items.sort((prevItem: Item, presItem: Item) => {
@@ -72,7 +83,7 @@ export class HomeComponent implements OnInit {
   addItem() {
     this.items.unshift(new Item({
     }));
-}
+  }
 
   deleteItem(index: number) {
     this.items.splice(index, 1);
@@ -85,13 +96,13 @@ export class HomeComponent implements OnInit {
     return randomSKU;
 
   }
-editItem(item: Item) {
-  item.editing = true;
-  this.disableFinish = true;
-}
-sendToCheckout() {
-  this.appComponent.navigateTo('checkout');
-}
+  editItem(item: Item) {
+    item.editing = true;
+    this.disableFinish = true;
+  }
+  sendToCheckout() {
+    this.appComponent.navigateTo('checkout');
+  }
 }
 
 
