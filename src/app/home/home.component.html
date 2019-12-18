@@ -1,72 +1,67 @@
-<div>
-    <div>
-        <table class="table table-striped">
-            <thead class="table-dark table-striped">
-                <tr>
-                    <th scope="col">SKU</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                    <th class="btn-group" scope="col">
-                        <button type="button" [disabled]="disableFinish" class="btn btn-primary btn-sm" (click)="addItem()">
-                            <mat-icon>add</mat-icon>
-                        </button>
-                        <button type="button" [disabled]="disableFinish" class="btn btn-success btn-sm" (click)="sendToCheckout()">
-                            Finish Editing
-                        </button>
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="table-light table-striped">
-                <!-- normal -->
-                <tr scope="row" *ngFor="let item of items; let i = index">
-                    <th scope="row" *ngIf="!item.editing" scope="row">{{item.sku}}</th>
-                    <td *ngIf="!item.editing">{{item.name}}</td>
-                    <td *ngIf="!item.editing">$ {{item.price}}</td>
-                    <td *ngIf="!item.editing">{{item.description}}</td>
-                    <td *ngIf="!item.editing">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-sm btn-danger" (click)="deleteItem(i)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                            <button type="button" [disabled]="disableFinish" class="btn btn-sm btn-primary" (click)="editItem(item)">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                        </div>
 
-                    </td>
-                    <!-- editing -->
-                    <th *ngIf="item.editing" scope="row">
-                        {{item.sku}}
-                    </th>
-                    <td *ngIf="item.editing">
-                        <input [(ngModel)]="item.name" type="text" class="form-control" placeholder="Name"
-                            aria-label="Name" aria-describedby="basic-addon1">
-                    </td>
-                    <td *ngIf="item.editing">
-                        <input [(ngModel)]="item.price" type="text" class="form-control" placeholder="Price"
-                            aria-label="Price" aria-describedby="basic-addon1">
-                    </td>
-                    <td *ngIf="item.editing">
-                        <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Description"
-                            aria-label="Description" aria-describedby="basic-addon1">
-                    </td>
-                    <td *ngIf="item.editing">
-                        <div class="btn-group">
-                            <button type="button" [disabled]="disableFinish" class="btn btn-danger n" (click)="deleteItem(i)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                            <button type="button" class="btn btn-success contact-button" (click)="saveItem(item)">
-                                <mat-icon>save</mat-icon>
-                            </button>
+<table class="table table-striped">
+    <thead class="table-dark table-striped">
+        <tr>
+            <th scope="col">SKU</th>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th class="btn-group" scope="col">
+                <button type="button" [disabled]="disableFinish" class="btn btn-primary btn-sm" (click)="addItem()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button type="button" [disabled]="disableFinish" class="btn btn-success btn-sm" (click)="sendToCheckout()">
+                    Finish Editing
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody class="table-light table-striped">
+        <!-- normal -->
+        <tr scope="row" *ngFor="let item of items; let i = index" class="h-items">
+            <th scope="row" *ngIf="!item.editing" scope="row">{{item.sku}}</th>
+            <td *ngIf="!item.editing">{{item.name}}</td>
+            <td *ngIf="!item.editing">$ {{item.price}}</td>
+            <td *ngIf="!item.editing">{{item.description}}</td>
+            <td *ngIf="!item.editing">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger" (click)="deleteItem(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button type="button" [disabled]="disableFinish" class="btn btn-primary" (click)="editItem(item)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
 
-                        </div>
+            </td>
+            <!-- editing -->
+            <th *ngIf="item.editing" scope="row">
+                {{item.sku}}
+            </th>
+            <td *ngIf="item.editing">
+                <input [(ngModel)]="item.name" type="text" class="form-control" placeholder="Name" aria-label="Name"
+                    aria-describedby="basic-addon1">
+            </td>
+            <td *ngIf="item.editing">
+                <input [(ngModel)]="item.price" type="text" class="form-control" placeholder="Price" aria-label="Price"
+                    aria-describedby="basic-addon1">
+            </td>
+            <td *ngIf="item.editing">
+                <input [(ngModel)]="item.description" type="text" class="form-control" placeholder="Description"
+                    aria-label="Description" aria-describedby="basic-addon1">
+            </td>
+            <td *ngIf="item.editing">
+                <div class="btn-group">
+                    <button type="button" [disabled]="disableFinish" class="btn btn-danger" (click)="deleteItem(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button type="button" class="btn btn-success" (click)="saveItem(item)">
+                        <mat-icon>save</mat-icon>
+                    </button>
 
-                    </td>
-            </tbody>
-        </table>
-    </div>
-    <div>
+                </div>
 
-    </div>
-</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
